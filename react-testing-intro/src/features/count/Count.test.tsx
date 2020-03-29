@@ -4,7 +4,6 @@ import { mount } from 'enzyme';
 import sinon from 'sinon';
 
 test('simulate increment count on click', () => {
-
     const spy = sinon.spy();
     const wrapper = mount(
       <Count count={0} incrementCount={spy}/>

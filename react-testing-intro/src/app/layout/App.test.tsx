@@ -2,12 +2,12 @@ import React from 'react';
 import App from './App';
 import { shallow, render, mount } from 'enzyme';
 
-test('renders learn react link with enzyme', () => {
+test('renders "You clicked this button" text with enzyme', () => {
   const wrapper = shallow(
     <App />
   );
   
-  expect(wrapper.text()).toContain('Learn React');
+  expect(wrapper.text()).toContain('You clicked this button');
 });
 
 test('adds correctly', () => {
@@ -15,7 +15,7 @@ test('adds correctly', () => {
 });
 
 // Real unit test (isolation, no children render)
-test('renders correctly - shaññpw', () => {
+test('renders correctly - shallow', () => {
   const wrapper = shallow(
     <App />
   );
@@ -32,7 +32,7 @@ test('renders correctly - render', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-// Full rendering including child components. The only way to test componentDidMount and componentDidUpdate.
+// Full rendering including child components. 
 test('renders correctly - mount', () => {
   const wrapper = mount(
     <App />
