@@ -10,14 +10,14 @@ const requests = {
         delete: (url:string) => axios.delete(url).then((response) => response.data),
     },
     buffer: {
-        getArrayBuffer: (url: string) => axios.get(url, {responseType: 'arraybuffer'}).then(response => new Buffer(response.data, 'binary').toString('base64')),
+        get: (url: string) => axios.get(url, {responseType: 'arraybuffer'}).then(response => Buffer.from(response.data, 'binary').toString('base64')),
     }
 };
 
-const photos = {
-    jpeg: () => requests.buffer.getArrayBuffer('/image/jpeg')
+const Photos = {
+    jpeg: () => requests.buffer.get('/image/jpeg')
 };
 
 export default {
-    photos
-}
+    Photos
+};

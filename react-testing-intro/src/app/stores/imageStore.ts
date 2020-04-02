@@ -11,15 +11,18 @@ class ImageStore {
     @action loadJpgImage = async () => {
         this.loadingImage = true
         try {
-            let image = await agent.photos.jpeg();
+            let image = await agent.Photos.jpeg();
             runInAction('getting image', () => {
+
                 this.imageOfTheDay = 'data:image/jpg;charset=utf-8;base64,' + image;
                 this.loadingImage = false;
             }); 
         }
         catch (ex) {
             console.log(ex);
-            this.loadingImage = false
+            runInAction('load JPG image error', () => {
+                this.loadingImage = false;
+            });
         }
     }
 }

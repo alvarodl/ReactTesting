@@ -1,11 +1,21 @@
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
 import React from "react";
 import Image from "./Image";
-import { act } from "@testing-library/react";
+import { act, cleanup } from "@testing-library/react";
 
 jest.mock('../../app/api/agent');
 
-test("render component correctly", async (done) => {
+afterEach(cleanup);
+
+test('component shallow snapshot', () => {
+    const wrapper = shallow(
+        <Image />
+    );
+
+    expect(wrapper).toMatchSnapshot();
+})
+
+it("fetches image and renders it on mount", async (done) => {
     await act(async () => {
         const wrapper = mount(
             <Image />
